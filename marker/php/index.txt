@@ -40,7 +40,7 @@ foreach(array_reverse($files) as $value){
         $listtext .= $value.",";
     }
 }
-echo $listtext;
+echo rtrim($listtext,",");
 
 ?></div>
 <?php

@@ -26,6 +26,11 @@ PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
 -->
 </head>
 <body>
+<div id = "prevjsondatadiv" style = "display:none"><?php
+
+echo file_get_contents("../marker/json/currentjson.txt");
+
+?></div>
 <div id = "jsondatadiv" style = "display:none"><?php
 
 echo file_get_contents("json/currentjson.txt");

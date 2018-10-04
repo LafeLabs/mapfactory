@@ -35,12 +35,8 @@
 
 markerinputs = document.getElementById("markertable").getElementsByTagName("INPUT");
 
-imagesextra = document.getElementById("imagesdatadiv").innerHTML.split(",");
 
-images = [];
-for(var index = 0;index < imagesextra.length  - 1;index++){
-    images.push(imagesextra[index]);    
-}
+images = document.getElementById("imagesdatadiv").innerHTML.split(",");
 
 if(document.getElementById("jsondatadiv").innerHTML.length > 4){
     currentjson = JSON.parse(document.getElementById("jsondatadiv").innerHTML);

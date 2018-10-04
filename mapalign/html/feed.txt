@@ -1,0 +1,368 @@
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+<table id = "linktable">
+<tr>
+    <td>
+        <a href = "editor.php">EDIT</a>
+    </td>
+    <td>
+        <a href = "../marker/">MARKER</a>
+    </td>
+</tr>
+
+</table>
+<div class = "button" id = "backbutton">BACK</div>
+<div class = "button" id = "fwdbutton">FWD</div>
+<div class = "button" id = "publishbutton">PUBLISH</div>
+<table id = "markertable">
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+<img id = "mainImage"/>
+<canvas id = "mainCanvas"></canvas>
+
+<script>
+
+markers = document.getElementById("markertable").getElementsByTagName("TD");
+
+
+localjsondata = JSON.parse(document.getElementById("jsondatadiv").innerHTML);
+
+prevjsondata = JSON.parse(document.getElementById("prevjsondatadiv").innerHTML);
+
+
+currentjson = prevjsondata;
+mapIndex = 0;
+markerIndex = 0;
+imageIndex = 0;
+
+images = document.getElementById("imagesdatadiv").innerHTML.split(",");
+
+
+document.getElementById("mainImage").src =  "../images/images/" + images[imageIndex];
+
+markers[1].innerHTML = "marker 1: " + currentjson[images[imageIndex]].marker1;
+markers[0].innerHTML = "marker 0: " + currentjson[images[imageIndex]].marker0;
+markers[markerIndex].style.backgroundColor = "#80ff80";
+
+
+ctx = document.getElementById("mainCanvas").getContext("2d");
+ctx.strokeStyle= "black";
+ctx.lineWidth = 4;
+ctx.fillStyle = "black";
+
+if(innerWidth < innerHeight){
+    smallerWidth = innerWidth;
+}
+else{
+    smallerWidth = innerHeight;
+}
+
+
+
+
+document.getElementById("mainImage").onload = function(){
+    if(this.width < innerWidth){
+        this.style.left = (0.5*(innerWidth - this.width)).toString() + "px";
+        imageWidth = 0.5*(innerWidth - this.width);
+    }
+    else{
+        this.style.left = "0px";
+        this.style.width = innerWidth;
+        imageWidth = innerWidth;
+    }
+    document.getElementById("mainCanvas").width = document.getElementById("mainImage").width;
+    document.getElementById("mainCanvas").height = document.getElementById("mainImage").height;
+    x0 = 0.5*document.getElementById("mainImage").width;
+    y0 = 0.5*document.getElementById("mainImage").height;
+    x = x0;
+    y = y0;
+    x1 = x0;
+    y1 = y0;
+    document.getElementById("mainCanvas").style.left = (x0).toString() + "px";
+    document.getElementById("mainImage").style.left = (x0).toString() + "px";
+    redraw();
+}
+
+
+function redraw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    ctx.lineWidth = 2;    	
+
+ //   ctx.strokeStyle = "green";
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+//    ctx.strokeStyle = "black";
+
+    ctx.beginPath();
+    ctx.moveTo(x,y - 100);
+    ctx.lineTo(x,y + 100);
+    ctx.stroke();		
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.moveTo(x - 100,y);
+    ctx.lineTo(x + 100,y);
+    ctx.stroke();		
+    ctx.closePath();
+    
+   // ctx.strokeStyle = "black";
+    
+    ctx.beginPath();
+    ctx.arc(x1, y1, 10, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x1,y1 - 100);
+    ctx.lineTo(x1,y1 + 100);
+    ctx.stroke();		
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.moveTo(x1 - 100,y1);
+    ctx.lineTo(x1 + 100,y1);
+    ctx.stroke();		
+    ctx.closePath();
+
+}
+
+
+mc = new Hammer(document.getElementById("mainCanvas"));
+mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+mc.on("panleft panright panup pandown tap press", function(ev) {
+    if(markerIndex == 0){
+        x = x0 + ev.deltaX;
+        y = y0 + ev.deltaY;
+    }
+    if(markerIndex == 1){
+        x1 = x0 + ev.deltaX;
+        y1 = y0 + ev.deltaY;
+    }
+    redraw();
+});
+
+
+
+document.getElementById("publishbutton").onclick = function(){
+    feetperdegree = 364567;
+
+    lat0 = parseFloat(feedJSON[imageIndex].latlon0.split(",")[0]);
+    lon0 = parseFloat(feedJSON[imageIndex].latlon0.split(",")[1]);
+    lat1 = parseFloat(feedJSON[imageIndex].latlon1.split(",")[0]);
+    lon1 = parseFloat(feedJSON[imageIndex].latlon1.split(",")[1]);
+    
+    deltay = (lat1 - lat0)*feetperdegree;//feet
+    deltax = (lon1 - lon0)*feetperdegree*Math.cos(Math.PI*lat0/180);//feet
+    deltar = Math.sqrt(deltax*deltax + deltay*deltay);//distance between markers in feet
+    angle = Math.atan2(deltax,deltay);
+    
+    deltaxoverwidth = (x1 - x)/document.getElementById("mainImage").width;
+    deltayoverwidth = -(y1 - y)/document.getElementById("mainImage").width; 
+    deltaroverwidth = Math.sqrt(deltaxoverwidth*deltaxoverwidth + deltayoverwidth*deltayoverwidth);
+    anglepx = Math.atan2(deltaxoverwidth,deltayoverwidth);
+    deltaangle = anglepx - angle;
+    
+    widthfeet = deltar/deltaroverwidth;//feet divided by r as a fraction of width
+
+    rx2corner = widthfeet*Math.sqrt(x*x + y*y)/document.getElementById("mainImage").width;
+    anglecorner = Math.atan2(-x,y);
+
+    latcorner = lat0 + rx2corner*Math.cos(anglecorner)/feetperdegree;
+    loncorner = lon0 + (1/Math.cos(lat0*Math.PI/180))*rx2corner*Math.sin(anglecorner)/feetperdegree;
+    
+    savejson = {};
+    savejson.widthfeet  = widthfeet;
+    savejson.angle = deltaangle;
+    savejson.fontfeet = widthfeet/20;
+    savejson.latlon = latcorner.toString() + "," + loncorner.toString();
+    savejson.imgurl = feedJSON[imageIndex].imgurl;
+    timestamp = Math.round((new Date().getTime())/1000);
+
+    data = encodeURIComponent(JSON.stringify(savejson,null,"    "));
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data=" + data + "&filename=" + path + "json/json" + timestamp + ".txt");//send text to filesaver.php
+    var httpc = new XMLHttpRequest();
+    var url = "makejsonindex.php?path=" + path;        
+    httpc.open("GET", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send();//send text to filesaver.php
+    
+    globalurlbase = "localhost:8000/";
+    htmldata = "<a href = \"" + globalurlbase + "feed/mapalignfeed/json/json" + timestamp + ".txt\">\n";
+    htmldata += "    <img src = \"" + savejson.imgurl + "\" style = \"width:100%\"/>\n</a>";
+    htmldata = encodeURIComponent(htmldata);
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data=" + htmldata + "&filename=" + path + "html/html" + timestamp + ".txt");//send text to filesaver.php
+    var httpc = new XMLHttpRequest();
+    var url = "makehtmlindex.php?path=" + path;        
+    httpc.open("GET", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send();//send text to filesaver.php
+    
+    setdatum = {};
+    setdatum.widthfeet = savejson.widthfeet;
+    setdatum.angle = savejson.angle;
+    setdatum.latlon = savejson.latlon;
+    setdatum.fontfeet = savejson.fontfeet;
+    setdatum.url = "../feed/mapalignfeed/html/html" + timestamp + ".txt";
+    
+    
+    currentFile = "../map/json/set.txt";
+    var httpc2 = new XMLHttpRequest();
+    httpc2.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            setjson = JSON.parse(this.responseText);
+            setjson.push(setdatum);
+            
+            jsonsetsavedata = encodeURIComponent(JSON.stringify(setjson,null,"    "));
+            var httpc3 = new XMLHttpRequest();
+            var url = "filesaver.php";        
+            httpc3.open("POST", url, true);
+            httpc3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+            httpc3.send("data=" + jsonsetsavedata + "&filename=../map/json/set.txt");//send text to filesaver.php
+            
+        }
+    };
+    httpc2.open("GET", "fileloader.php?filename=" + currentFile, true);
+    httpc2.send();
+
+    
+}
+
+document.getElementById("fwdbutton").onclick = function(){
+    imageIndex++;
+    if(imageIndex >= images.length){
+        imageIndex = 0;
+    }
+
+    document.getElementById("mainImage").src =  "../images/images/" + images[imageIndex];
+
+    markers[1].innerHTML = "marker 1: " + currentjson[images[imageIndex]].marker1;
+    markers[0].innerHTML = "marker 0: " + currentjson[images[imageIndex]].marker0;
+
+}
+document.getElementById("backbutton").onclick = function(){
+    imageIndex--;
+    if(imageIndex < 0){
+        imageIndex = images.length - 1;
+    }
+    document.getElementById("mainImage").src =  "../images/images/" + images[imageIndex];
+    markers[1].innerHTML = "marker 1: " + currentjson[images[imageIndex]].marker1;
+    markers[0].innerHTML = "marker 0: " + currentjson[images[imageIndex]].marker0;
+
+}
+
+markers[0].onclick = function(){
+    markers[markerIndex].style.backgroundColor = "white";
+    markerIndex = 0;
+    markers[markerIndex].style.backgroundColor = "#80ff80";
+}
+markers[1].onclick = function(){
+    markers[markerIndex].style.backgroundColor = "white";
+    markerIndex = 1;
+    markers[markerIndex].style.backgroundColor = "#80ff80";
+}
+
+</script>
+<style>
+
+p{
+    text-align:right;
+}
+#inputtable{
+    position:absolute;
+    top:1em;
+    left:1em;
+    z-index:2;
+}
+input{
+    width:20em;
+    font-size:22px;
+}
+
+a{
+    z-index:3;
+}
+#mainCanvas{
+    position:absolute;
+    z-index:0;
+    left:0px;
+    top:0px;
+}
+#mainImage{
+   position:absolute;
+   z-index:-1;
+   left:0px;
+   top:0px;
+    overflow:hidden;
+    height:100%;
+
+}
+#backbutton{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    z-index:3;
+}
+#fwdbutton{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    z-index:3;
+}
+#publishbutton{
+    position:absolute;
+    z-index:3;
+    bottom:0px;
+    left:35%;
+    width:30%;
+}
+#flowdecklink{
+    position:relative;
+    z-index:3;
+}
+.button{
+    cursor:pointer;
+    text-align:center;
+    height:4em;
+    padding-top:2em;
+    padding-left:2em;
+    padding-right:2em;
+}
+.button:hover{
+    background-color:green;
+}
+.button:active{
+    background-color:yellow;
+}
+#markertable{
+    position:absolute;
+    left:0px;
+    top:50%;
+}
+#markertable td{
+    cursor:pointer;
+}
+#markertable td:hover{
+    border:solid;
+}
+
+#linktable{
+    position:absolute;
+    z-index:2;
+    right:0px;
+    top:0px;
+}
+#foo{
+    display:none;
+}
+</style>

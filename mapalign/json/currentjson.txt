@@ -1,0 +1,14 @@
+{
+    "image1.png": {
+        "latlon0": "",
+        "marker0": "crystal and 23rd",
+        "latlon1": "",
+        "marker1": "crystal and 20th"
+    },
+    "image2.png": {
+        "latlon0": "",
+        "marker0": "crystal and 12th",
+        "latlon1": "",
+        "marker1": "long bridge and 6th"
+    }
+}
