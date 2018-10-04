@@ -1,0 +1,28 @@
+<svg width="250" height="250" viewbox = "0 0 250 250"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 250,
+    "svgheight": 250,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0336,0331,0337,0237,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M25 175 L25 125 L25 75 M25 75           A50 50 0 0 1 75 25L125 25 L175 25 M175 25           A50 50 0 0 1 225 75L225 125 L225 175 M225 175           A50 50 0 0 1 175 225L125 225 L75 225 M74.99999999999999 225           A50 50 0 0 1 24.999999999999986 175" stroke = "black" stroke-width = "8" fill = "none" />    <circle cx="87" cy = "88" r = "25" stroke = "black" stroke-width = "8" fill = "none" />
+    <line x1="87" y1="88" x2="87" y2="38" style="stroke:black;stroke-width:8" />
+    <line x1="87" y1="88" x2="137" y2="87" style="stroke:black;stroke-width:8" />
+    <line x1="87" y1="88" x2="87" y2="138" style="stroke:black;stroke-width:8" />
+    <line x1="87" y1="88" x2="37" y2="88" style="stroke:black;stroke-width:8" />
+	<path d = "M88 188 L75 188 L75 175 L75 169 L69 169 L75 163 L81 156 L87 163 L94 169 L87 169 L87 175 L87 187 Z" stroke = "black" stroke-width = "8" fill = "black" />	<path d = "M75 187 L87 187 L87 200 L87 206 L94 206 L87 212 L81 219 L75 212 L69 206 L75 206 L75 200 L75 187 Z" stroke = "black" stroke-width = "8" fill = "black" />	<path d = "M181 88 L181 75 L194 75 L200 75 L200 69 L206 75 L213 81 L206 88 L200 94 L200 88 L194 88 L181 88 Z" stroke = "black" stroke-width = "8" fill = "black" />	<path d = "M181 75 L181 88 L169 88 L163 88 L163 94 L156 88 L150 81 L156 75 L163 69 L163 75 L169 75 L181 75 Z" stroke = "black" stroke-width = "8" fill = "black" /></svg>

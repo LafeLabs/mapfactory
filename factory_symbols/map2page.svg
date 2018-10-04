@@ -1,0 +1,28 @@
+<svg width="370" height="250" viewbox = "0 0 370 250"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 370,
+    "svgheight": 250,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0336,0331,0337,0336,0332,0332,0336,0333,0337,0337,0234,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M10 175 L10 125 L10 75 M10.000000000000007 75           A50 50 0 0 1 60.00000000000001 25L110 25 L160 25 L210 25 L260 25 L310 25 M310 25           A50 50 0 0 1 360 75L360 125 L360 175 M360 175           A50 50 0 0 1 310 225L260 225 L210 225 L160 225 L110 225 L60 225 M59.99999999999999 225           A50 50 0 0 1 9.999999999999993 175" stroke = "black" stroke-width = "8" fill = "none" />	<path d = "M85 125 L68 108 L85 57 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M85 125 L102 108 L153 125 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M85 125 L102 142 L85 193 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M85 125 L68 142 L17 125 Z" stroke = "black" stroke-width = "1" fill = "black" />    <line x1="102" y1="108" x2="85" y2="57" style="stroke:black;stroke-width:1" />
+    <line x1="68" y1="108" x2="17" y2="125" style="stroke:black;stroke-width:1" />
+    <line x1="68" y1="142" x2="85" y2="193" style="stroke:black;stroke-width:1" />
+    <line x1="102" y1="142" x2="153" y2="125" style="stroke:black;stroke-width:1" />
+	<path d = "M160 138 L160 113 L185 113 L198 113 L198 100 L210 113 L223 125 L210 138 L198 150 L198 138 L185 138 L160 138 Z" stroke = "black" stroke-width = "1" fill = "black" /><path    d = "M285,113 C274,106 296,81 285,75" fill = "none" stroke-width = "8" stroke = "black" /><path    d = "M296,119 C296,106 328,113 328,100" fill = "none" stroke-width = "8" stroke = "black" /><path    d = "M296,131 C307,125 317,156 328,150" fill = "none" stroke-width = "8" stroke = "black" /><path    d = "M285,137 C296,144 274,169 285,175" fill = "none" stroke-width = "8" stroke = "black" /><path    d = "M274,131 C274,144 242,137 242,150" fill = "none" stroke-width = "8" stroke = "black" /><path    d = "M274,119 C263,125 253,94 242,100" fill = "none" stroke-width = "8" stroke = "black" />    <circle cx="285" cy = "125" r = "6.250000000000001" stroke = "black" stroke-width = "8" fill = "black" />
+</svg>

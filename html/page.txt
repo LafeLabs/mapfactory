@@ -22,13 +22,20 @@
     <tr>
         <td>
             <a href = "mapalign/">
-                <img src = "factory_symbols/aligner.svg">
+                <img src = "factory_symbols/mapalign.svg">
             </a>
         </td>
     </tr>
     <tr>
         <td>
-            <a href = "map/">
+            <a href = "map2page/">
+                <img src = "factory_symbols/map2page.svg">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href = "map.php">
                 <img src = "factory_symbols/map.svg">
             </a>
         </td>
