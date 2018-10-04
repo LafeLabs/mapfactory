@@ -1,0 +1,23 @@
+<svg width="400" height="250" viewbox = "0 0 400 250"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 400,
+    "svgheight": 250,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0331,0332,0332,0336,0336,0333,0337,0337,0250,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M25 225 L75 175 L125 175 L75 225 L25 225 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M75 225 L125 175 L175 175 L125 225 L75 225 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M125 225 L175 175 L225 175 L175 225 L125 225 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M175 225 L225 175 L275 175 L225 225 L175 225 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M225 225 L275 175 L325 175 L275 225 L225 225 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M275 225 L325 175 L375 175 L325 225 L275 225 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M325 225 L375 175 L375 225 L325 225 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M25 225 L25 175 L75 175 L25 225 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M25 75 L75 25 L125 25 L75 75 L25 75 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M75 75 L125 25 L175 25 L125 75 L75 75 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M125 75 L175 25 L225 25 L175 75 L125 75 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M175 75 L225 25 L275 25 L225 75 L175 75 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M225 75 L275 25 L325 25 L275 75 L225 75 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M275 75 L325 25 L375 25 L325 75 L275 75 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M325 75 L375 25 L375 75 L325 75 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M25 75 L25 25 L75 25 L25 75 Z" stroke = "yellow" stroke-width = "1" fill = "yellow" />	<path d = "M25 125 L25 150 L47 138 L68 125 L47 113 L25 100 L25 125 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M125 125 L125 150 L147 138 L168 125 L147 113 L125 100 L125 125 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M225 125 L225 150 L247 137 L268 125 L247 112 L225 100 L225 125 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M325 125 L325 150 L347 137 L368 125 L347 112 L325 100 L325 125 Z" stroke = "black" stroke-width = "1" fill = "black" /></svg>

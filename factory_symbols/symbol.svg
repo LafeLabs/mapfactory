@@ -1,0 +1,25 @@
+<svg width="250" height="250" viewbox = "0 0 250 250"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 250,
+    "svgheight": 250,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0336,0331,0336,0336,0337,0337,0337,0237,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M25 175 L25 125 L25 75 M25 75           A50 50 0 0 1 75 25L125 25 L175 25 M175 25           A50 50 0 0 1 225 75L225 125 L225 175 M225 175           A50 50 0 0 1 175 225L125 225 L75 225 M74.99999999999999 225           A50 50 0 0 1 24.999999999999986 175" stroke = "black" stroke-width = "6" fill = "none" />    <circle cx="125" cy = "150" r = "6.25" stroke = "black" stroke-width = "6" fill = "black" />
+    <circle cx="125" cy = "75" r = "6.25" stroke = "black" stroke-width = "6" fill = "black" />
+	<path d = "M125 175 L122 175 L122 125 L128 125 L128 175 L125 175 Z" stroke = "black" stroke-width = "6" fill = "black" />	<path d = "M125 175 L125 172 L175 172 L175 178 L125 178 L125 175 Z" stroke = "black" stroke-width = "6" fill = "black" />	<path d = "M125 175 L125 178 L75 178 L75 172 L125 172 L125 175 Z" stroke = "black" stroke-width = "6" fill = "black" /></svg>

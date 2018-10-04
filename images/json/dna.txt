@@ -1,0 +1,22 @@
+[
+	{
+		"path":"php",
+		"files":[
+			"deleteallimages.txt",
+			"dnagenerator.txt",
+			"editor.txt",
+			"fileloader.txt",
+			"filesaver.txt",
+			"index.txt",
+			"replicator.txt",
+			"text2php.txt",
+			"upload.txt"
+		]
+	},
+	{
+		"path":"json",
+		"files":[
+			"dna.txt"
+		]
+	}
+]

@@ -1,0 +1,27 @@
+<svg width="220" height="220" viewbox = "0 0 220 220"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 220,
+    "svgheight": 220,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0336,0331,0337,0261,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M10 160 L10 110 L10 60 M10.000000000000007 59.99999999999999           A50 50 0 0 1 60.00000000000001 10L110 10 L160 10 M160 10           A50 50 0 0 1 210 60L210 110 L210 160 M210 160           A50 50 0 0 1 160 210L110 210 L60 210 M59.99999999999999 210           A50 50 0 0 1 9.999999999999993 160" stroke = "black" stroke-width = "10" fill = "none" />	<path d = "M110 110 L75 110 L92 92 L110 110 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M110 110 L110 75 L128 92 L110 110 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M110 110 L145 110 L128 128 L110 110 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M110 110 L92 128 L110 145 L110 110 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M128 92 L110 38 L110 95 Z" stroke = "black" stroke-width = "1" fill = "black" />    <line x1="110" y1="38" x2="92" y2="92" style="stroke:black;stroke-width:1" />
+    <line x1="128" y1="92" x2="182" y2="110" style="stroke:black;stroke-width:1" />
+	<path d = "M182 110 L128 128 L110 110 Z" stroke = "black" stroke-width = "1" fill = "black" />	<path d = "M110 110 L92 128 L110 182 Z" stroke = "black" stroke-width = "1" fill = "black" />    <line x1="110" y1="182" x2="128" y2="128" style="stroke:black;stroke-width:1" />
+	<path d = "M110 110 L92 92 L38 110 Z" stroke = "black" stroke-width = "1" fill = "black" />    <line x1="38" y1="110" x2="92" y2="128" style="stroke:black;stroke-width:1" />
+</svg>

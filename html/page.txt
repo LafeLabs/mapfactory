@@ -1,0 +1,76 @@
+<script>
+//redirect to page in "pages": (uncomment to redirect)
+//window.location.href = "page/index.php?path=pagefromfeed/";
+
+</script>
+
+<h1>Watershed Factory</h1>
+<div id = "factorybox">
+<table id = "factorytable">
+    <tr>
+        <td>
+            <a href = "images/">
+                <img src = "factory_symbols/images.svg">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href = "marker/"><img style = "width:80px" src = "../factory_symbols/marker.svg"></a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href = "aligner/">
+                <img src = "factory_symbols/aligner.svg">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href = "map/">
+                <img src = "factory_symbols/map.svg">
+            </a>
+        </td>
+    </tr>
+</table>
+
+<a href = "editor.php"><img style = "width:100px" src = "factory_symbols/editor.svg"/></a>
+
+<a href = "copy.php">COPY THE FACTORY</a>
+</div>
+<style>
+    h1{
+        font-size:3em;
+    }
+    ul{
+        font-size:2em;
+        list-style-type:none;
+    }
+    #factorybox{
+        position:absolute;
+        left:0px;
+        right:0px;
+        top:6em;
+        bottom:0px;
+        border-top:solid;
+        overflow:scroll;
+    }
+    #factorytable{
+        margin:auto;
+        display:block;
+        width:100%;
+        text-align:center;
+    }  
+    #factorytable img{
+        width:100px;
+    }
+    td{
+        text-align:center;
+        width:22%;
+    }
+    tr{
+        text-align:center;
+        width:100%;
+    }
+</style>

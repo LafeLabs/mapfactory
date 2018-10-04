@@ -1,0 +1,29 @@
+<svg width="220" height="220" viewbox = "0 0 220 220"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+    "imgurl": "",
+    "imgw": 4.743971328437736,
+    "imgleft": -2.2873205904167726,
+    "imgtop": -3.171985664218851,
+    "imgangle": 0,
+    "svgwidth": 220,
+    "svgheight": 220,
+    "unit": 100,
+    "x0": 684,
+    "y0": 399,
+    "x0rel": 0,
+    "y0rel": 0,
+    "glyph": "0336,0331,0337,0235,0336,0332,0330,0331,0337,050,0170,054,0171,051,0336,0365,0330,0333,0336,0330,0341,0342,0335,0342,0335,0342,0335,0342,0335,",
+    "table": []
+}
+</json>
+-->
+	<path d = "M10 160 L10 110 L10 60 M10.000000000000007 59.99999999999999           A50 50 0 0 1 60.00000000000001 10L110 10 L160 10 M160 10           A50 50 0 0 1 210 60L210 110 L210 160 M210 160           A50 50 0 0 1 160 210L110 210 L60 210 M59.99999999999999 210           A50 50 0 0 1 9.999999999999993 160" stroke = "black" stroke-width = "10" fill = "none" />    <text x="60" y = "160" fill = "black" font-size = "50px" font-family = "arial">(x,y)</text>
+    <circle cx="110" cy = "85" r = "25" stroke = "black" stroke-width = "10" fill = "none" />
+    <line x1="110" y1="85" x2="110" y2="60" style="stroke:black;stroke-width:10" />
+    <line x1="110" y1="85" x2="135" y2="85" style="stroke:black;stroke-width:10" />
+    <line x1="110" y1="85" x2="110" y2="110" style="stroke:black;stroke-width:10" />
+    <line x1="110" y1="85" x2="85" y2="85" style="stroke:black;stroke-width:10" />
+</svg>

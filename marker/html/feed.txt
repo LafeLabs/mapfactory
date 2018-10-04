@@ -1,0 +1,175 @@
+<table id = "linktable">
+    <tr>
+        <td>
+            <a href = "../images/">
+                <img style = "width:80px" src = "../factory_symbols/images.svg"/>
+            </a>
+        </td>
+        <td>
+            <a href = "editor.php">
+            <img style = "width:80px" src = "../factory_symbols/editor.svg"/>    
+            </a>
+        </td>
+    </tr>
+
+</table>
+<div id = "imagedatadiv" style = "display:none;"></div>
+<table id = "markertable">
+    <tr>
+        <td class = "button" id = "backbutton">PREV</td><td  class = "button" id = "nextbutton">NEXT</td><td></td>
+    </tr>
+    <tr>
+        <td>Marker 0:</td><td><input/></td><td>Latlon 0:</td><td><input/></td>
+    </tr>
+    <tr>
+        <td>Marker 1:</td><td><input/></td><td>Latlon 1:</td><td><input/></td>
+    </tr>
+</table>
+
+<div id = "scrolldiv">
+<img id = "mainImage" style = "width:100%"/>
+</div>
+
+<div id = "localmemedatadiv" style = "display:none"></div>
+<script>
+
+markerinputs = document.getElementById("markertable").getElementsByTagName("INPUT");
+
+imagesextra = document.getElementById("imagesdatadiv").innerHTML.split(",");
+
+images = [];
+for(var index = 0;index < imagesextra.length  - 1;index++){
+    images.push(imagesextra[index]);    
+}
+
+if(document.getElementById("jsondatadiv").innerHTML.length > 4){
+    currentjson = JSON.parse(document.getElementById("jsondatadiv").innerHTML);
+}
+else{
+    currentjson = {};
+}
+for(var index = 0;index < images.length;index++){
+    if(currentjson[images[index]] == undefined){
+        currentjson[images[index]] = {};
+        currentjson[images[index]].latlon0 = "";
+        currentjson[images[index]].marker0 = "";
+        currentjson[images[index]].latlon1 = "";
+        currentjson[images[index]].marker1 = "";
+    }
+}
+
+imageIndex = 0;
+document.getElementById("mainImage").src = "../images/images/" + images[imageIndex];
+
+markerinputs[0].value = currentjson[images[imageIndex]].marker0;
+markerinputs[1].value = currentjson[images[imageIndex]].latlon0;
+markerinputs[2].value = currentjson[images[imageIndex]].marker1;
+markerinputs[3].value = currentjson[images[imageIndex]].latlon1;
+
+    
+    
+function redraw(){
+    currentFile = "json/currentjson.txt";
+    data = encodeURIComponent(JSON.stringify(currentjson,null,"    "));
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename="+currentFile);//send text to filesaver.php
+}
+
+markerinputs[0].onchange = function(){
+    currentjson[images[imageIndex]].marker0 = this.value;
+    redraw();
+}
+markerinputs[1].onchange = function(){
+    currentjson[images[imageIndex]].latlon0 = this.value;
+    redraw();
+}
+markerinputs[2].onchange = function(){
+    currentjson[images[imageIndex]].marker1 = this.value;
+    redraw();
+}
+markerinputs[3].onchange = function(){
+    currentjson[images[imageIndex]].latlon1 = this.value;
+    redraw();
+}
+
+document.getElementById("backbutton").onclick = function(){
+    imageIndex--;
+    if(imageIndex < 0){
+        imageIndex = images.length - 1;
+    }
+    document.getElementById("mainImage").src = "../images/images/" + images[imageIndex];
+    markerinputs[0].value = currentjson[images[imageIndex]].marker0;
+    markerinputs[1].value = currentjson[images[imageIndex]].latlon0;
+    markerinputs[2].value = currentjson[images[imageIndex]].marker1;
+    markerinputs[3].value = currentjson[images[imageIndex]].latlon1;
+}
+document.getElementById("nextbutton").onclick = function(){
+    imageIndex++;
+    if(imageIndex > images.length - 1){
+        imageIndex = 0;
+    }
+    document.getElementById("mainImage").src = "../images/images/" + images[imageIndex];
+    markerinputs[0].value = currentjson[images[imageIndex]].marker0;
+    markerinputs[1].value = currentjson[images[imageIndex]].latlon0;
+    markerinputs[2].value = currentjson[images[imageIndex]].marker1;
+    markerinputs[3].value = currentjson[images[imageIndex]].latlon1;
+
+}
+
+
+</script>
+<style>
+    #scrolldiv{
+        position:absolute;
+        top:6em;
+        bottom:0px;
+        right:0px;
+        left:0px;
+        overflow:scroll;
+        padding:1em 1em 1em 1em;
+        border-top:solid;
+    }
+p{
+    text-align:right;
+}
+#linktable{
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+#inputtable{
+    position:absolute;
+    top:1em;
+    left:1em;
+    z-index:2;
+}
+input{
+    width:20em;
+    font-size:22px;
+}
+
+a{
+    z-index:3;
+}
+img{
+   width:50%;
+   display:block;
+   margin:auto;
+}
+
+.button{
+    cursor:pointer;
+    text-align:center;
+    border:solid;
+    border-radius:10px;
+}
+.button:hover{
+    background-color:green;
+}
+.button:active{
+    background-color:yellow;
+}
+</style>
