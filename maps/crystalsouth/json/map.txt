@@ -1,4 +1,5 @@
 {
+    "mapname": "crystalsouth",
     "imagefilename": "image1.png",
     "latlon": "38.85849654918639,-77.05310677893732",
     "widthfeet": 2530.27417296849,

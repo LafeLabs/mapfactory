@@ -7,7 +7,7 @@
             <a href = "../marker/"><img style = "width:80px" src = "../factory_symbols/marker.svg"/></a>
         </td>
         <td>
-            <a href = "../mapaligner/"><img style = "width:80px" src = "../factory_symbols/mapalign.svg"/></a>
+            <a href = "../mapalign/"><img style = "width:80px" src = "../factory_symbols/mapalign.svg"/></a>
         </td>
         <td>
             <a href = "../"><img style = "width:80px" src = "../factory_symbols/factory.svg"/></a>
@@ -58,6 +58,7 @@ document.getElementById("publishbutton").onclick = function(){
         imgurlarray = document.getElementById("outmap").src.split("/");
         imagefilename = imgurlarray[imgurlarray.length - 1];
         savejson = {};
+        savejson.mapname = currentFile;
         savejson.imagefilename = imagefilename;
         savejson.latlon = currentjson[imagefilename].latlon;
         savejson.widthfeet = currentjson[imagefilename].widthfeet;

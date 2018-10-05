@@ -162,7 +162,7 @@ function redraw(){
     deltayoverwidth = -(y1 - y)/document.getElementById("mainImage").width; 
     deltaroverwidth = Math.sqrt(deltaxoverwidth*deltaxoverwidth + deltayoverwidth*deltayoverwidth);
     anglepx = Math.atan2(deltaxoverwidth,deltayoverwidth);
-    deltaangle = anglepx - angle;
+    deltaangle = (anglepx - angle)*180/Math.PI;
     
     widthfeet = deltar/deltaroverwidth;//feet divided by r as a fraction of width
 
