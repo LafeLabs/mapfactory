@@ -72,7 +72,7 @@ document.getElementById("publishbutton").onclick = function(){
         
         newa = document.createElement("a");
         newa.innerHTML = currentFile;
-        newa.href =  "../" + currentFile + "/";
+        newa.href =  "../maps/" + currentFile + "/";
         document.getElementById("pagelink").appendChild(newa);
     }
     else{

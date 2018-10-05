@@ -23,12 +23,12 @@
 
     $filename = $_POST["filename"];//name of new directory
 
-    mkdir("../".$filename);
-        mkdir("../".$filename."/images");
-        mkdir("../".$filename."/php");
-        mkdir("../".$filename."/json");
-    copy("../php/map.txt","../".$filename."/index.php");    
-    file_put_contents("../".$filename."/json/map.txt",$data);
-    copy("../images/images/".$imagefilename,"../".$filename."/images/".$imagefilename);    
+    mkdir("../maps/".$filename);
+        mkdir("../maps/".$filename."/images");
+        mkdir("../maps/".$filename."/php");
+        mkdir("../maps/".$filename."/json");
+    copy("../php/map.txt","../maps/".$filename."/index.php");    
+    file_put_contents("../maps/".$filename."/json/map.txt",$data);
+    copy("../images/images/".$imagefilename,"../maps/".$filename."/images/".$imagefilename);    
     
 ?>

@@ -26,7 +26,9 @@ EGO DEATH:
     <a href = "copy.php">copy.php</a>
     <a href = "index.php">index.php</a>
     <a href = "map.php">map.php</a>
+    <a href = "maplist.php">maplist.php</a>
     <a href = "dnagenerator.php">dnagenerator.php</a>
+    
 </div>
 <div id = "namediv"></div>
 <div id="maineditor" contenteditable="true" spellcheck="false"></div>
@@ -43,7 +45,7 @@ EGO DEATH:
     <div class = "php file">php/dnagenerator.txt</div>
     <div class = "php file">php/copy.txt</div>
     <div class = "php file">php/map.txt</div>
-
+    <div class = "php file">php/maplist.txt</div>
     <div class = "json file">json/dna.txt</div>
 </div>
 
