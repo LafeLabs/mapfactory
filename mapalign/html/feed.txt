@@ -277,9 +277,8 @@ a{
    z-index:-1;
    left:0px;
    top:0px;
-    overflow:hidden;
-    height:100%;
-
+   overflow:hidden;
+   height:100%;
 }
 #backbutton{
     position:absolute;

@@ -17,30 +17,18 @@
 */
 
     $data = $_POST["data"]; //get data  which is just a JSON list of images
+    
+    $mapjson = json_decode($data);
+    $imagefilename = $mapjson->imagefilename;
+
     $filename = $_POST["filename"];//name of new directory
-    $imagelist =json_decode($data);
 
     mkdir("../".$filename);
         mkdir("../".$filename."/images");
         mkdir("../".$filename."/php");
-        
-    copy("../deck/php/indextemplate.txt","../deck/decks/".$filename."/index.php");    
-    copy("../deck/deckeditor.php","../deck/decks/".$filename."/deckeditor.php");    
-    copy("../deck/filesaver.php","../deck/decks/".$filename."/filesaver.php");    
-    copy("../deck/fileloader.php","../deck/decks/".$filename."/fileloader.php");    
-    $decktext = "";
-    $imageindex = 0;
-    foreach($imagelist as $value){
-        $fileextension = substr($value,-4);
-        $patharray = explode("/",$value);
-        $fullfilename = "../".$patharray[count($patharray) - 3]."/".$patharray[count($patharray) - 2]."/".$patharray[count($patharray) - 1];
-        copy($fullfilename,"../deck/decks/".$filename."/images/image".$imageindex.$fileextension);    
-        $decktext .= "\n<div class = \"slide\">\n    \n<h1></h1>\n<img src = \"";
-        $decktext .= "images/image".$imageindex.$fileextension."\"/>";
-        $decktext .= "\n</div>\n";
-        $imageindex++;
-    }
-    
-    file_put_contents("../deck/decks/".$filename."/html/deck.txt",$decktext);
+        mkdir("../".$filename."/json");
+    copy("../php/map.txt","../".$filename."/index.php");    
+    file_put_contents("../".$filename."/json/map.txt",$data);
+    copy("../images/images/".$imagefilename,"../".$filename."/images/".$imagefilename);    
     
 ?>

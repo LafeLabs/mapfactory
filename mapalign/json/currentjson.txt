@@ -4,10 +4,10 @@
         "marker0": "crystal and 23rd",
         "latlon1": "38.856111, -77.049344",
         "marker1": "crystal and 20th",
-        "widthfeet": 2531.1784407573355,
-        "angle": 0.002666871131785868,
-        "fontfeet": 126.55892203786678,
-        "latlon": "38.85857188336093,-77.05310805970598",
+        "widthfeet": 2530.27417296849,
+        "angle": 0.00914063305522874,
+        "fontfeet": 126.5137086484245,
+        "latlon": "38.85849654918639,-77.05310677893732",
         "imgurl": "http://localhost:8000/images/images/image1.png"
     },
     "image2.png": {
@@ -15,10 +15,10 @@
         "marker0": "crystal and 12th",
         "latlon1": " 38.865651, -77.049790 ",
         "marker1": "long bridge and 6th",
-        "widthfeet": null,
-        "angle": 3.3809332054168224,
-        "fontfeet": null,
-        "latlon": "Infinity,-Infinity",
+        "widthfeet": 4063.4566997529496,
+        "angle": 0.02680992171403146,
+        "fontfeet": 203.1728349876475,
+        "latlon": "38.87053141381875,-77.05301065666862",
         "imgurl": "http://localhost:8000/images/images/image2.png"
     }
 }

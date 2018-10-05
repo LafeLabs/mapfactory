@@ -36,8 +36,6 @@ EGO DEATH:
     <div class = "php file">php/filesaver.txt</div>
     <div class = "php file">php/fileloader.txt</div>
     <div class = "php file">php/text2php.txt</div>
-    <div class = "php file">php/makenewscroll.txt</div>
-    <div class = "php file">php/makenewdeck.txt</div>
     <div class = "php file">php/makenewmap.txt</div>
     
 </div>
