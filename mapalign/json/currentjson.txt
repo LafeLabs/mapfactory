@@ -3,23 +3,33 @@
         "latlon0": " 38.853282, -77.049523 ",
         "marker0": "crystal and 23rd",
         "latlon1": "38.856111, -77.049344",
-        "marker1": "crystal and 20th"
+        "marker1": "crystal and 20th",
+        "widthfeet": 2482.9384466377237,
+        "angle": 0.09607666450421168,
+        "fontfeet": 124.14692233188619,
+        "latlon": "38.858453049507446,-77.05303973451153",
+        "imgurl": "http://localhost:8000/images/images/image1.png"
     },
     "image2.png": {
         "latlon0": " 38.862326, -77.048748 ",
         "marker0": "crystal and 12th",
         "latlon1": " 38.865651, -77.049790 ",
-        "marker1": "long bridge and 6th"
+        "marker1": "long bridge and 6th",
+        "widthfeet": 4054.4522735977544,
+        "angle": 0.9610837358133109,
+        "fontfeet": 202.72261367988773,
+        "latlon": "38.87053080017852,-77.05295608391954",
+        "imgurl": "http://localhost:8000/images/images/image2.png"
     },
     "image6.jpg": {
         "latlon0": "38.858149, -77.049048",
         "marker0": "Trail entrance at waterpark",
         "latlon1": "38.862474, -77.048542",
         "marker1": "long bridge park entrance",
-        "widthfeet": 4736.013772582662,
-        "angle": -2.3430760867251186,
-        "fontfeet": 236.80068862913308,
-        "latlon": "38.8667372359134,-77.05836409307449",
+        "widthfeet": 4989.7778991259,
+        "angle": -3.6980455540618986,
+        "fontfeet": 249.488894956295,
+        "latlon": "38.86722025854079,-77.05895129537066",
         "imgurl": "http://localhost:8000/images/images/image6.jpg"
     },
     "image5.png": {
@@ -27,21 +37,21 @@
         "marker0": "south boundary stone",
         "latlon1": "38.995668, -77.041141",
         "marker1": "north boundary stone",
-        "widthfeet": 66445.38702581527,
-        "angle": 0.11153278942338181,
-        "fontfeet": 3322.2693512907636,
-        "latlon": "39.00668976123429,-77.17023563867994",
+        "widthfeet": 66344.90410072988,
+        "angle": -0.6784493275303497,
+        "fontfeet": 3317.245205036494,
+        "latlon": "39.00551728320661,-77.17438236232343",
         "imgurl": "http://localhost:8000/images/images/image5.png"
     },
     "image4.png": {
         "latlon0": "38.858149, -77.049048",
-        "marker0": "train entrance at water park",
+        "marker0": "trail entrance at water park",
         "latlon1": "38.858071, -77.051571",
         "marker1": "metro entrance",
-        "widthfeet": 1339.2493851925287,
-        "angle": 0.8732463499601539,
-        "fontfeet": 66.96246925962643,
-        "latlon": "38.860826617759884,-77.05288203030398",
+        "widthfeet": 1253.9391522234012,
+        "angle": -0.945963907687021,
+        "fontfeet": 62.696957611170056,
+        "latlon": "38.86068059227321,-77.0526220461734",
         "imgurl": "http://localhost:8000/images/images/image4.png"
     },
     "image3.png": {
@@ -49,10 +59,10 @@
         "marker0": "trail entrance at water park",
         "latlon1": "38.859092, -77.049027",
         "marker1": "VRE entrance",
-        "widthfeet": 357.87434901262515,
-        "angle": -1.69645736067491,
-        "fontfeet": 17.893717450631257,
-        "latlon": "38.85945464197247,-77.04941082898661",
+        "widthfeet": 360.74264764168856,
+        "angle": -2.410815297499089,
+        "fontfeet": 18.03713238208443,
+        "latlon": "38.85945149826751,-77.04941373699577",
         "imgurl": "http://localhost:8000/images/images/image3.png"
     }
 }

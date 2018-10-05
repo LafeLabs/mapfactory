@@ -55,18 +55,16 @@ document.getElementById("mainImage").src = "images/" + thismap.imagefilename;
     
 document.getElementById("mainImage").onload = function(){
     if(this.width < innerWidth){
-        this.style.left = (0.5*(innerWidth - this.width)).toString() + "px";
-        imageWidth = 0.5*(innerWidth - this.width);
+        imageWidth = this.width;
     }
     else{
-        this.style.left = "0px";
         this.style.width = innerWidth;
         imageWidth = innerWidth;
     }        
     init();
 }
 function init(){
-    feetperpixel = thismap.feetwidth/imageWidth;
+    feetperpixel = thismap.widthfeet/imageWidth;
     for(var index = 0;index < localmaps.length;index++){
         if(localmaps[index].widthfeet < 0.8*thismap.widthfeet){
             if(getdistance(localmaps[index].latlon,thismap.latlon) < thismap.widthfeet){
@@ -77,7 +75,7 @@ function init(){
                 newimg.className = "submapimg";
                 newimg.src = "../" + localmaps[index].mapname + "/images/" + localmaps[index].imagefilename; 
                 newa.href = "../" + localmaps[index].mapname + "/";
-                document.getElementById("bigbox").appendChild(newa);
+                
                 //sort z index manually after they're all loaded
                 
                 
@@ -93,10 +91,19 @@ function init(){
                 var deltaxfeet = feetperdegree*(lat2 - lat1)*Math.cos(lat1*Math.PI/180);
                 var deltayfeet = feetperdegree*(lat2 - lat1);
     
+                newa.style.position = "absolute";
+                
+                var z = -Math.round(Math.log(localmaps[index].widthfeet*10)); 
+                newa.style.zIndex = parseInt(z).toString();
+                newimg.style.zIndex = parseInt(z -1).toString();
+
                 newa.style.width = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
-                newa.style.left = (deltaxfeet/feetperpixel).toString() + "px";
-                newa.style.top  = (deltayfeet/feetperpixel).toString() + "px";
+                newimg.style.width = "100%";
+                newa.style.height = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
+                newa.style.left = (-deltaxfeet/feetperpixel).toString() + "px";
+                newa.style.top  = (-deltayfeet/feetperpixel).toString() + "px";
                 newa.style.transform = "rotate(" + deltaangle.toString() + "deg)";
+                document.getElementById("bigbox").appendChild(newa);
             }
         }
         else{
@@ -131,7 +138,7 @@ function getdistance(latlon1,latlon2){
 }
 #mainImage{
     position:absolute;
-    z-index:-1;
+    z-index:-10000;
     left:0px;
     top:0px;
     overflow:hidden;
@@ -148,12 +155,17 @@ body{
     right:0px;
     bottom:0px;
     overflow:hidden;
+    z-index:-10000;
+
 }
-#submapa{
+.submapa{
     position:absolute;
+    border:solid;
 }
-#submapimg{
+.submapimg{
     position:absolute;
+    left:0px;
+    top:0px;
     width:100%;
 }
 </style>

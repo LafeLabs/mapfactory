@@ -43,8 +43,13 @@
 
 markers = document.getElementById("markertable").getElementsByTagName("TD");
 
+if(document.getElementById("jsondatadiv").innerHTML.length > 1){
+    localjsondata = JSON.parse(document.getElementById("jsondatadiv").innerHTML);    
+}
+else{
+    localjsondata = {};
+}
 
-localjsondata = JSON.parse(document.getElementById("jsondatadiv").innerHTML);
 
 prevjsondata = JSON.parse(document.getElementById("prevjsondatadiv").innerHTML);
 
@@ -69,24 +74,14 @@ ctx.strokeStyle= "black";
 ctx.lineWidth = 4;
 ctx.fillStyle = "black";
 
-if(innerWidth < innerHeight){
-    smallerWidth = innerWidth;
-}
-else{
-    smallerWidth = innerHeight;
-}
-
-
 
 
 document.getElementById("mainImage").onload = function(){
     if(this.width < innerWidth){
-        this.style.left = (0.5*(innerWidth - this.width)).toString() + "px";
-        imageWidth = 0.5*(innerWidth - this.width);
+        imageWidth = this.width;
     }
     else{
-        this.style.left = "0px";
-        this.style.width = innerWidth;
+        this.style.width = innerWidth.toString() + "px";
         imageWidth = innerWidth;
     }
     document.getElementById("mainCanvas").width = document.getElementById("mainImage").width;
@@ -97,10 +92,7 @@ document.getElementById("mainImage").onload = function(){
     y = y0;
     x1 = x0;
     y1 = y0;
-    document.getElementById("mainCanvas").style.left = (x0).toString() + "px";
-    document.getElementById("mainImage").style.left = (x0).toString() + "px";
-    
-    
+
     feetperdegree = 364567;
 
     lat0 = parseFloat(currentjson[images[imageIndex]].latlon0.split(",")[0]);
@@ -319,7 +311,7 @@ a{
 }
 #markertable{
     position:absolute;
-    left:0px;
+    right:0px;
     top:50%;
 }
 #markertable td{

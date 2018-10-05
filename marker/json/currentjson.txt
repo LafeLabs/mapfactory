@@ -25,7 +25,7 @@
     },
     "image4.png": {
         "latlon0": "38.858149, -77.049048",
-        "marker0": "train entrance at water park",
+        "marker0": "trail entrance at water park",
         "latlon1": "38.858071, -77.051571",
         "marker1": "metro entrance"
     },

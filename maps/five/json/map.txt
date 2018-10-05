@@ -1,0 +1,7 @@
+{
+    "mapname": "five",
+    "imagefilename": "image2.png",
+    "latlon": "38.87053080017852,-77.05295608391954",
+    "widthfeet": 4054.4522735977544,
+    "angle": 0.9610837358133109
+}

@@ -55,11 +55,9 @@ document.getElementById("mainImage").src = "images/" + thismap.imagefilename;
     
 document.getElementById("mainImage").onload = function(){
     if(this.width < innerWidth){
-        this.style.left = (0.5*(innerWidth - this.width)).toString() + "px";
-        imageWidth = 0.5*(innerWidth - this.width);
+        imageWidth = this.width;
     }
     else{
-        this.style.left = "0px";
         this.style.width = innerWidth;
         imageWidth = innerWidth;
     }        
@@ -102,7 +100,7 @@ function init(){
                 newa.style.width = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
                 newimg.style.width = "100%";
                 newa.style.height = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
-                newa.style.left = (0.5*(innerWidth - imageWidth) + deltaxfeet/feetperpixel).toString() + "px";
+                newa.style.left = (-deltaxfeet/feetperpixel).toString() + "px";
                 newa.style.top  = (-deltayfeet/feetperpixel).toString() + "px";
                 newa.style.transform = "rotate(" + deltaangle.toString() + "deg)";
                 document.getElementById("bigbox").appendChild(newa);
@@ -157,12 +155,14 @@ body{
     right:0px;
     bottom:0px;
     overflow:hidden;
+    z-index:-10000;
+
 }
-#submapa{
+.submapa{
     position:absolute;
     border:solid;
 }
-#submapimg{
+.submapimg{
     position:absolute;
     left:0px;
     top:0px;

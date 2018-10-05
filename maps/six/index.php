@@ -55,9 +55,11 @@ document.getElementById("mainImage").src = "images/" + thismap.imagefilename;
     
 document.getElementById("mainImage").onload = function(){
     if(this.width < innerWidth){
+        this.style.left = (0.5*(innerWidth - this.width)).toString() + "px";
         imageWidth = this.width;
     }
     else{
+        this.style.left = "0px";
         this.style.width = innerWidth;
         imageWidth = innerWidth;
     }        
@@ -100,10 +102,12 @@ function init(){
                 newa.style.width = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
                 newimg.style.width = "100%";
                 newa.style.height = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
-                newa.style.left = (-deltaxfeet/feetperpixel).toString() + "px";
+                newa.style.left = (0.5*(innerWidth - imageWidth) - deltaxfeet/feetperpixel).toString() + "px";
                 newa.style.top  = (-deltayfeet/feetperpixel).toString() + "px";
                 newa.style.transform = "rotate(" + deltaangle.toString() + "deg)";
                 document.getElementById("bigbox").appendChild(newa);
+                console.log("deltax="  + deltaxfeet + "\n");
+                console.log("deltay="  + deltayfeet + "\n");
             }
         }
         else{

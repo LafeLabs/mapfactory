@@ -1,0 +1,7 @@
+{
+    "mapname": "three",
+    "imagefilename": "image4.png",
+    "latlon": "38.86068059227321,-77.0526220461734",
+    "widthfeet": 1253.9391522234012,
+    "angle": -0.945963907687021
+}

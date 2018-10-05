@@ -1,7 +1,0 @@
-{
-    "mapname": "waterpark",
-    "imagefilename": "image3.png",
-    "latlon": "38.85945464197247,-77.04941082898661",
-    "widthfeet": 357.87434901262515,
-    "angle": -1.69645736067491
-}
