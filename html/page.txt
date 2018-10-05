@@ -44,7 +44,9 @@
 
 <a href = "editor.php"><img style = "width:100px" src = "factory_symbols/editor.svg"/></a>
 
-<a href = "copy.php">COPY THE FACTORY</a>
+<a href = "copy.php">
+    <img style = "height:80px" src = "factory_symbols/copy.svg">
+</a>
 </div>
 <style>
     h1{
@@ -66,7 +68,8 @@
     #factorytable{
         margin:auto;
         display:block;
-        width:100%;
+        width:50%;
+        
         text-align:center;
     }  
     #factorytable img{

@@ -1,0 +1,4 @@
+[
+    "http://localhost:8000/curve/svg/svg1538660929.svg",
+    "http://localhost:8000/symbol/svg/svg1538626463.svg"
+]

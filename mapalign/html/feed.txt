@@ -2,11 +2,26 @@
 <table id = "linktable">
 <tr>
     <td>
-        <a href = "editor.php">EDIT</a>
+        <a href = "editor.php">
+    <img src = "../factory_symbols/editor.svg"/>    
+        </a>
     </td>
     <td>
-        <a href = "../marker/">MARKER</a>
+        <a href = "../marker/">
+        <img src = "../factory_symbols/marker.svg"/>    
+        </a>
     </td>
+    <td>
+        <a href = "../">
+    <img src = "../factory_symbols/factory.svg"/>    
+        </a>
+    </td>
+    <td>
+        <a href = "../map2page/">
+    <img src = "../factory_symbols/map2page.svg"/>    
+        </a>
+    </td>
+
 </tr>
 
 </table>
@@ -84,6 +99,20 @@ document.getElementById("mainImage").onload = function(){
     y1 = y0;
     document.getElementById("mainCanvas").style.left = (x0).toString() + "px";
     document.getElementById("mainImage").style.left = (x0).toString() + "px";
+    
+    
+    feetperdegree = 364567;
+
+    lat0 = parseFloat(currentjson[images[imageIndex]].latlon0.split(",")[0]);
+    lon0 = parseFloat(currentjson[images[imageIndex]].latlon0.split(",")[1]);
+    lat1 = parseFloat(currentjson[images[imageIndex]].latlon1.split(",")[0]);
+    lon1 = parseFloat(currentjson[images[imageIndex]].latlon1.split(",")[1]);
+    
+    deltay = (lat1 - lat0)*feetperdegree;//feet
+    deltax = (lon1 - lon0)*feetperdegree*Math.cos(Math.PI*lat0/180);//feet
+    deltar = Math.sqrt(deltax*deltax + deltay*deltay);//distance between markers in feet
+    angle = Math.atan2(deltax,deltay);
+        
     redraw();
 }
 
@@ -127,6 +156,29 @@ function redraw(){
     ctx.stroke();		
     ctx.closePath();
 
+
+      
+    deltaxoverwidth = (x1 - x)/document.getElementById("mainImage").width;
+    deltayoverwidth = -(y1 - y)/document.getElementById("mainImage").width; 
+    deltaroverwidth = Math.sqrt(deltaxoverwidth*deltaxoverwidth + deltayoverwidth*deltayoverwidth);
+    anglepx = Math.atan2(deltaxoverwidth,deltayoverwidth);
+    deltaangle = anglepx - angle;
+    
+    widthfeet = deltar/deltaroverwidth;//feet divided by r as a fraction of width
+
+    rx2corner = widthfeet*Math.sqrt(x*x + y*y)/document.getElementById("mainImage").width;
+    anglecorner = Math.atan2(-x,y);
+
+    latcorner = lat0 + rx2corner*Math.cos(anglecorner)/feetperdegree;
+    loncorner = lon0 + (1/Math.cos(lat0*Math.PI/180))*rx2corner*Math.sin(anglecorner)/feetperdegree;
+    
+    currentjson[images[imageIndex]].widthfeet  = widthfeet;
+    currentjson[images[imageIndex]].angle = deltaangle;
+    currentjson[images[imageIndex]].fontfeet = widthfeet/20;
+    currentjson[images[imageIndex]].latlon = latcorner.toString() + "," + loncorner.toString();
+    currentjson[images[imageIndex]].imgurl = document.getElementById("mainImage").src;
+
+    
 }
 
 
@@ -147,93 +199,15 @@ mc.on("panleft panright panup pandown tap press", function(ev) {
 
 
 document.getElementById("publishbutton").onclick = function(){
-    feetperdegree = 364567;
 
-    lat0 = parseFloat(feedJSON[imageIndex].latlon0.split(",")[0]);
-    lon0 = parseFloat(feedJSON[imageIndex].latlon0.split(",")[1]);
-    lat1 = parseFloat(feedJSON[imageIndex].latlon1.split(",")[0]);
-    lon1 = parseFloat(feedJSON[imageIndex].latlon1.split(",")[1]);
-    
-    deltay = (lat1 - lat0)*feetperdegree;//feet
-    deltax = (lon1 - lon0)*feetperdegree*Math.cos(Math.PI*lat0/180);//feet
-    deltar = Math.sqrt(deltax*deltax + deltay*deltay);//distance between markers in feet
-    angle = Math.atan2(deltax,deltay);
-    
-    deltaxoverwidth = (x1 - x)/document.getElementById("mainImage").width;
-    deltayoverwidth = -(y1 - y)/document.getElementById("mainImage").width; 
-    deltaroverwidth = Math.sqrt(deltaxoverwidth*deltaxoverwidth + deltayoverwidth*deltayoverwidth);
-    anglepx = Math.atan2(deltaxoverwidth,deltayoverwidth);
-    deltaangle = anglepx - angle;
-    
-    widthfeet = deltar/deltaroverwidth;//feet divided by r as a fraction of width
 
-    rx2corner = widthfeet*Math.sqrt(x*x + y*y)/document.getElementById("mainImage").width;
-    anglecorner = Math.atan2(-x,y);
-
-    latcorner = lat0 + rx2corner*Math.cos(anglecorner)/feetperdegree;
-    loncorner = lon0 + (1/Math.cos(lat0*Math.PI/180))*rx2corner*Math.sin(anglecorner)/feetperdegree;
-    
-    savejson = {};
-    savejson.widthfeet  = widthfeet;
-    savejson.angle = deltaangle;
-    savejson.fontfeet = widthfeet/20;
-    savejson.latlon = latcorner.toString() + "," + loncorner.toString();
-    savejson.imgurl = feedJSON[imageIndex].imgurl;
-    timestamp = Math.round((new Date().getTime())/1000);
-
-    data = encodeURIComponent(JSON.stringify(savejson,null,"    "));
+    data = encodeURIComponent(JSON.stringify(currentjson,null,"    "));
     var httpc = new XMLHttpRequest();
     var url = "filesaver.php";        
     httpc.open("POST", url, true);
     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    httpc.send("data=" + data + "&filename=" + path + "json/json" + timestamp + ".txt");//send text to filesaver.php
-    var httpc = new XMLHttpRequest();
-    var url = "makejsonindex.php?path=" + path;        
-    httpc.open("GET", url, true);
-    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    httpc.send();//send text to filesaver.php
-    
-    globalurlbase = "localhost:8000/";
-    htmldata = "<a href = \"" + globalurlbase + "feed/mapalignfeed/json/json" + timestamp + ".txt\">\n";
-    htmldata += "    <img src = \"" + savejson.imgurl + "\" style = \"width:100%\"/>\n</a>";
-    htmldata = encodeURIComponent(htmldata);
-    var httpc = new XMLHttpRequest();
-    var url = "filesaver.php";        
-    httpc.open("POST", url, true);
-    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    httpc.send("data=" + htmldata + "&filename=" + path + "html/html" + timestamp + ".txt");//send text to filesaver.php
-    var httpc = new XMLHttpRequest();
-    var url = "makehtmlindex.php?path=" + path;        
-    httpc.open("GET", url, true);
-    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    httpc.send();//send text to filesaver.php
-    
-    setdatum = {};
-    setdatum.widthfeet = savejson.widthfeet;
-    setdatum.angle = savejson.angle;
-    setdatum.latlon = savejson.latlon;
-    setdatum.fontfeet = savejson.fontfeet;
-    setdatum.url = "../feed/mapalignfeed/html/html" + timestamp + ".txt";
-    
-    
-    currentFile = "../map/json/set.txt";
-    var httpc2 = new XMLHttpRequest();
-    httpc2.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            setjson = JSON.parse(this.responseText);
-            setjson.push(setdatum);
-            
-            jsonsetsavedata = encodeURIComponent(JSON.stringify(setjson,null,"    "));
-            var httpc3 = new XMLHttpRequest();
-            var url = "filesaver.php";        
-            httpc3.open("POST", url, true);
-            httpc3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-            httpc3.send("data=" + jsonsetsavedata + "&filename=../map/json/set.txt");//send text to filesaver.php
-            
-        }
-    };
-    httpc2.open("GET", "fileloader.php?filename=" + currentFile, true);
-    httpc2.send();
+    httpc.send("data=" + data + "&filename=json/currentjson.txt");//send text to filesaver.php
+
 
     
 }
@@ -361,6 +335,9 @@ a{
     z-index:2;
     right:0px;
     top:0px;
+}
+#linktable img{
+    width:80px;
 }
 #foo{
     display:none;

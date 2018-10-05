@@ -1,0 +1,139 @@
+<table id = "linktable">
+    <tr>
+        <td>
+            <a href = "../images/"><img style = "width:80px" src = "../factory_symbols/images.svg"/></a>
+        </td>
+        <td>
+            <a href = "../marker/"><img style = "width:80px" src = "../factory_symbols/marker.svg"/></a>
+        </td>
+        <td>
+            <a href = "../mapaligner/"><img style = "width:80px" src = "../factory_symbols/mapalign.svg"/></a>
+        </td>
+        <td>
+            <a href = "../"><img style = "width:80px" src = "../factory_symbols/factory.svg"/></a>
+        </td>
+        <td>
+            <a href = "editor.php"><img style = "width:80px" src = "../factory_symbols/editor.svg"></a>
+        </td>
+    </tr>
+</table>
+<table id = "ptable">
+    <tr>
+        <td id = "pagelink"></td>
+        <td>New Map Name:</td><td><input id = "nameinput"/></td><td id = "publishbutton" class = "button">PUBLISH</td>
+    </tr>
+</table>
+
+<div id = "imagesfeed">
+</div>
+<img id = "outmap"/>
+
+<script>
+    if(document.getElementById("prevjsondatadiv").innerHTML.length > 2){
+        currentjson = JSON.parse(document.getElementById("prevjsondatadiv").innerHTML);
+    }
+    else{
+        curretjson = {};        
+    }
+    
+    imagelist  = document.getElementById("imagesdatadiv").innerHTML.split(",");
+    for(var index = 0;index < imagelist.length;index++){
+        if(imagelist[index].length > 1){
+            var newimg = document.createElement("IMG");
+            newimg.src = "../images/images/" + imagelist[index];
+            document.getElementById("imagesfeed").appendChild(newimg);
+            newimg.onclick = function(){
+                document.getElementById("outmap").src = this.src;
+            }
+        }
+    }   
+    
+    
+
+document.getElementById("publishbutton").onclick = function(){
+    if(document.getElementById("nameinput").value.length > 1){
+
+        currentFile = document.getElementById("nameinput").value;
+
+        imgurlarray = document.getElementById("outmap").src.split("/");
+        imagefilename = imgurlarray[imgurlarray.length - 1];
+        savejson = {};
+        savejson.imagefilename = imagefilename;
+        savejson.latlon = currentjson[imagefilename].latlon;
+        savejson.widthfeet = currentjson[imagefilename].widthfeet;
+        savejson.angle = currentjson[imagefilename].angle;
+        
+        data = encodeURIComponent(JSON.stringify(savejson,null,"    "));
+        var httpc = new XMLHttpRequest();
+        var url = "makenewmap.php";        
+        httpc.open("POST", url, true);
+        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        httpc.send("data="+data+"&filename="+currentFile);//send text to makenewpage.php
+        
+        newa = document.createElement("a");
+        newa.innerHTML = currentFile;
+        newa.href =  "../" + currentFile + "/";
+        document.getElementById("pagelink").appendChild(newa);
+    }
+    else{
+        alert("Not enough information inputted, need a name!");
+    }
+}
+</script>
+<style>
+    #imagesfeed{
+        position:absolute;
+        width:15%;
+        left:5%;
+        top:5em;
+        bottom:1em;
+        overflow:scroll;
+        border:solid;
+    }
+    #imagesfeed img{
+        width:50%;
+        display:block;
+        margin:auto;
+        cursor:pointer;
+        margin-top:1em;
+        margin-bottom:1em;
+        border:solid;
+
+    }
+    #imagesfeed img:active{
+        background-color:yellow;
+        border-width:5px;
+    }
+    #outmap{
+        border:solid;
+        position:absolute;
+        right:0px;
+        bottom:0px;
+        height:50%;
+        z-index:-1;
+    }
+
+#linktable{
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+#ptable{
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+#nameinput{
+    font-size:20px;
+    width:15em;
+}
+.button{
+    cursor:pointer;
+    border:solid;
+    border-radius:10px;
+    text-align:center;
+}
+.button:active{
+    background-color:yellow;
+}
+</style>
