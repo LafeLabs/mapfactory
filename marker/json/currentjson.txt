@@ -10,5 +10,29 @@
         "marker0": "crystal and 12th",
         "latlon1": " 38.865651, -77.049790 ",
         "marker1": "long bridge and 6th"
+    },
+    "image6.jpg": {
+        "latlon0": "38.858149, -77.049048",
+        "marker0": "Trail entrance at waterpark",
+        "latlon1": "38.862474, -77.048542",
+        "marker1": "long bridge park entrance"
+    },
+    "image5.png": {
+        "latlon0": "38.791088, -77.039905",
+        "marker0": "south boundary stone",
+        "latlon1": "38.995668, -77.041141",
+        "marker1": "north boundary stone"
+    },
+    "image4.png": {
+        "latlon0": "38.858149, -77.049048",
+        "marker0": "train entrance at water park",
+        "latlon1": "38.858071, -77.051571",
+        "marker1": "metro entrance"
+    },
+    "image3.png": {
+        "latlon0": "38.858149, -77.049048",
+        "marker0": "trail entrance at water park",
+        "latlon1": "38.859092, -77.049027",
+        "marker1": "VRE entrance"
     }
 }

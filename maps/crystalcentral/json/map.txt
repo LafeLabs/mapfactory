@@ -1,0 +1,7 @@
+{
+    "mapname": "crystalcentral",
+    "imagefilename": "image4.png",
+    "latlon": "38.860826617759884,-77.05288203030398",
+    "widthfeet": 1339.2493851925287,
+    "angle": 0.8732463499601539
+}

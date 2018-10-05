@@ -66,7 +66,7 @@ document.getElementById("mainImage").onload = function(){
     init();
 }
 function init(){
-    feetperpixel = thismap.widthfeet/imageWidth;
+    feetperpixel = thismap.feetwidth/imageWidth;
     for(var index = 0;index < localmaps.length;index++){
         if(localmaps[index].widthfeet < 0.8*thismap.widthfeet){
             if(getdistance(localmaps[index].latlon,thismap.latlon) < thismap.widthfeet){
@@ -77,7 +77,7 @@ function init(){
                 newimg.className = "submapimg";
                 newimg.src = "../" + localmaps[index].mapname + "/images/" + localmaps[index].imagefilename; 
                 newa.href = "../" + localmaps[index].mapname + "/";
-                
+                document.getElementById("bigbox").appendChild(newa);
                 //sort z index manually after they're all loaded
                 
                 
@@ -93,19 +93,10 @@ function init(){
                 var deltaxfeet = feetperdegree*(lat2 - lat1)*Math.cos(lat1*Math.PI/180);
                 var deltayfeet = feetperdegree*(lat2 - lat1);
     
-                newa.style.position = "absolute";
-                
-                var z = -Math.round(Math.log(localmaps[index].widthfeet*10)); 
-                newa.style.zIndex = parseInt(z).toString();
-                newimg.style.zIndex = parseInt(z -1).toString();
-
                 newa.style.width = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
-                newimg.style.width = "100%";
-                newa.style.height = (localmaps[index].widthfeet/feetperpixel).toString() + "px";
-                newa.style.left = (0.5*(innerWidth - imageWidth) + deltaxfeet/feetperpixel).toString() + "px";
-                newa.style.top  = (-deltayfeet/feetperpixel).toString() + "px";
+                newa.style.left = (deltaxfeet/feetperpixel).toString() + "px";
+                newa.style.top  = (deltayfeet/feetperpixel).toString() + "px";
                 newa.style.transform = "rotate(" + deltaangle.toString() + "deg)";
-                document.getElementById("bigbox").appendChild(newa);
             }
         }
         else{
@@ -140,7 +131,7 @@ function getdistance(latlon1,latlon2){
 }
 #mainImage{
     position:absolute;
-    z-index:-10000;
+    z-index:-1;
     left:0px;
     top:0px;
     overflow:hidden;
@@ -160,12 +151,9 @@ body{
 }
 #submapa{
     position:absolute;
-    border:solid;
 }
 #submapimg{
     position:absolute;
-    left:0px;
-    top:0px;
     width:100%;
 }
 </style>

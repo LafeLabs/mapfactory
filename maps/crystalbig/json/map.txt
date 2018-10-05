@@ -1,0 +1,7 @@
+{
+    "mapname": "crystalbig",
+    "imagefilename": "image6.jpg",
+    "latlon": "38.8667372359134,-77.05836409307449",
+    "widthfeet": 4736.013772582662,
+    "angle": -2.3430760867251186
+}

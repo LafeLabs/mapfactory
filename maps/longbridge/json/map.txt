@@ -1,7 +1,0 @@
-{
-    "mapname": "longbridge",
-    "imagefilename": "image2.png",
-    "latlon": "38.87053141381875,-77.05301065666862",
-    "widthfeet": 4063.4566997529496,
-    "angle": 0.02680992171403146
-}

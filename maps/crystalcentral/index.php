@@ -75,14 +75,16 @@ function init(){
                 newa.appendChild(newimg);
                 newa.className = "submapa";
                 newimg.className = "submapimg";
-                newimg.src = "../" + localmaps[index].mapname + "/images/" + imagefilename; 
+                newimg.src = "../" + localmaps[index].mapname + "/images/" + localmaps[index].imagefilename; 
                 newa.href = "../" + localmaps[index].mapname + "/";
-                document.getElementById("bigbox").appendChild(newimg);
+                document.getElementById("bigbox").appendChild(newa);
                 //sort z index manually after they're all loaded
                 
                 
                 var deltaangle = localmaps[index].angle - thismap.angle;
                 
+                var latlon1 = thismap.latlon;
+                var latlon2 = localmaps[index].latlon;
                 var lat1 = parseFloat(latlon1.split(",")[0]);
                 var lon1 = parseFloat(latlon1.split(",")[1]);
                 var lat2 = parseFloat(latlon2.split(",")[0]);
